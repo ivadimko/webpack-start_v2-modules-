@@ -17,3 +17,9 @@ There go additional styles that are not critical for displaying above-the-fold c
   @import './sections/sections';
   @import './sections/footer';
 }
+
+@media screen and (max-width: $screen__l) {
+  h2{
+    margin-bottom: 100px;
+  }
+}

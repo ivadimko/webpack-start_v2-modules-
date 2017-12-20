@@ -5,3 +5,17 @@ h4 {
   font-size: 100px;
   color: $black;
 }
+
+@media screen and (max-width: $screen__l) {
+  h4{
+    height: 4px;
+  }
+}
+h4{
+  width: 100px;
+}
+@media screen and (max-width: $screen__l) {
+  h5{
+    height: 4px;
+  }
+}

@@ -34,7 +34,7 @@ export default function (env = {}, argv) {
         devServer: {
             contentBase: path.resolve(__dirname, 'assets')
         },
-        devtool: 'cheap-module-eval-source-map',
+        devtool: 'source-map',
         entry: {
             'js/main': './js/main.js'
         },

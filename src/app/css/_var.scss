@@ -1,0 +1,30 @@
+// screen size breakpoints
+
+
+$screen__xxs:  420px;
+$screen__xs:   576px;
+$screen__s:    640px;
+$screen__m:    768px;
+$screen__l:    1024px;
+$screen__xl:   1200px;
+$screen__xxl:  1400px;
+
+
+
+// color variables
+
+$white: #fff;
+$black: #222;
+$darkText: #4A4A4A;
+$footerBg: #161616;
+
+
+//colors for selection
+$sel-bg: #222;
+$sel-col: #fff;
+
+// font variables and mixins
+
+$montserrat: 'Montserrat', sans-serif;
+$prata: 'prata', serif;
+$helvetica: 'helvetica', sans-serif;

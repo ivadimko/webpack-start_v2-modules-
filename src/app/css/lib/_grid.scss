@@ -1,0 +1,287 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.group-block {
+  width: 100%;
+  max-width: 165rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.wide-block, .narrow-block {
+  grid-column: 1;
+  grid-row: 1;
+  height: 100%;
+}
+
+.max-height {
+  &, & > .row {
+    height: 100%;
+  }
+}
+
+.container {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  max-width: 114rem;
+  margin: 0 auto;
+  &.wide{
+    max-width: 144rem;
+  }
+  &.fluid {
+    max-width: 100%;
+  }
+  &.full {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 100%;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
+  &.row-margin{
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+}
+
+.cell {
+  flex: 0 0 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  .row > & {
+    flex-basis: auto;
+  }
+  .row-margin > & {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}
+
+
+.row {
+  @for $i from 1 through 12 {
+    & > .small-#{$i} {
+      width: percentage($i/12)
+    }
+  }
+  @for $i from 0 through 12 {
+    & > .small-offset-#{$i} {
+      margin-left: percentage($i/12)
+    }
+  }
+  @for $i from -1 through 5 {
+    & > .small-order-#{$i} {
+      order: $i;
+    }
+  }
+  &.row-margin{
+    @for $i from 1 through 12 {
+      & > .small-#{$i} {
+        width: calc(#{percentage($i/12)} - 3rem);
+      }
+    }
+    @for $i from 0 through 12 {
+      & > .small-offset-#{$i} {
+        margin-left: calc(#{percentage($i/12)} + 1.5rem);
+      }
+    }
+  }
+  &.small-align-right {
+    justify-content: flex-end;
+  }
+  &.small-align-center {
+    justify-content: center;
+  }
+  &.small-align-justify {
+    justify-content: space-between;
+  }
+  &.small-align-spaced {
+    justify-content: space-around;
+  }
+  &.small-align-top {
+    align-items: flex-start;
+  }
+  &.small-align-bottom {
+    align-items: flex-end;
+  }
+  &.small-align-middle {
+    align-items: center;
+  }
+  &.small-align-stretch {
+    align-items: stretch;
+  }
+  &.small-align-center-middle {
+    align-items: center;
+    justify-content: center;
+  }
+  & > .small-align-self-top {
+    align-self: flex-start;
+  }
+  & > .small-align-self-bottom {
+    align-self: flex-end;
+  }
+  & > .small-align-self-middle {
+    align-self: center;
+  }
+  & > .small-align-self-stretch {
+    align-self: stretch;
+  }
+}
+@media print, screen and (min-width: $screen__s) {
+  .row {
+    @for $i from 1 through 12 {
+      & > .medium-#{$i} {
+        width: percentage($i/12)
+      }
+    }
+    @for $i from 0 through 12 {
+      & > .medium-offset-#{$i} {
+        margin-left: percentage($i/12)
+      }
+    }
+    @for $i from -1 through 5 {
+      & > .medium-order-#{$i} {
+        order: $i;
+      }
+    }
+    &.row-margin{
+      @for $i from 1 through 12 {
+        & > .medium-#{$i} {
+          width: calc(#{percentage($i/12)} - 3rem);
+        }
+      }
+      @for $i from 0 through 12 {
+        & > .medium-offset-#{$i} {
+          margin-left: calc(#{percentage($i/12)} + 1.5rem);
+        }
+      }
+    }
+
+    &.medium-align-right {
+      justify-content: flex-end;
+    }
+    &.medium-align-center {
+      justify-content: center;
+    }
+    &.medium-align-justify {
+      justify-content: space-between;
+    }
+    &.medium-align-spaced {
+      justify-content: space-around;
+    }
+    &.medium-align-top {
+      align-items: flex-start;
+    }
+    &.medium-align-bottom {
+      align-items: flex-end;
+    }
+    &.medium-align-middle {
+      align-items: center;
+    }
+    &.medium-align-stretch {
+      align-items: stretch;
+    }
+    &.medium-align-center-middle {
+      align-items: center;
+      justify-content: center;
+    }
+    & > .medium-align-self-top {
+      align-self: flex-start;
+    }
+    & > .medium-align-self-bottom {
+      align-self: flex-end;
+    }
+    & > .medium-align-self-middle {
+      align-self: center;
+    }
+    & > .medium-align-self-stretch {
+      align-self: stretch;
+    }
+  }
+}
+@media (min-width: $screen__l) {
+  .row {
+    @for $i from 1 through 12 {
+      & > .large-#{$i} {
+        width: percentage($i/12)
+      }
+    }
+    @for $i from 0 through 12 {
+      & > .large-offset-#{$i} {
+        margin-left: percentage($i/12)
+      }
+    }
+    @for $i from -1 through 5 {
+      & > .large-order-#{$i} {
+        order: $i;
+      }
+    }
+    &.row-margin{
+      @for $i from 1 through 12 {
+        & > .large-#{$i} {
+          width: calc(#{percentage($i/12)} - 3rem);
+        }
+      }
+      @for $i from 0 through 12 {
+        & > .large-offset-#{$i} {
+          margin-left: calc(#{percentage($i/12)} + 1.5rem);
+        }
+      }
+    }
+
+    &.large-align-right {
+      justify-content: flex-end;
+    }
+    &.large-align-center {
+      justify-content: center;
+    }
+    &.large-align-justify {
+      justify-content: space-between;
+    }
+    &.large-align-spaced {
+      justify-content: space-around;
+    }
+    &.large-align-top {
+      align-items: flex-start;
+    }
+    &.large-align-bottom {
+      align-items: flex-end;
+    }
+    &.large-align-middle {
+      align-items: center;
+    }
+    &.large-align-stretch {
+      align-items: stretch;
+    }
+    &.large-align-center-middle {
+      align-items: center;
+      justify-content: center;
+    }
+    & > .large-align-self-top {
+      align-self: flex-start;
+    }
+    & > .large-align-self-bottom {
+      align-self: flex-end;
+    }
+    & > .large-align-self-middle {
+      align-self: center;
+    }
+    & > .large-align-self-stretch {
+      align-self: stretch;
+    }
+  }
+}

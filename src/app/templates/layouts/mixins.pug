@@ -1,0 +1,55 @@
+//- IMAGES
+
+mixin img (src, imgName, imgName2x)
+    if imgName2x
+        img(
+            src= src + imgName
+            srcset= src + imgName2x + ' 2x'
+            alt= 'alt'
+            data-name= name
+        )
+    else
+        img(
+            src= src + imgName
+            alt= 'alt'
+            data-name= name
+        )
+
+//- SECTION SOURCE
+mixin page__source(currentPage, ...sources)
+    ul.page__source
+        each source in sources
+            li
+                a(href='#')= source
+        li
+            p.source__current= currentPage
+
+//- FORM
+- var input_block_count = 0
+- var VALIDATION_TYPES = { required: 0, email: 1, phone: 2 }
+mixin input_block(label, validation_types, is_textarea)
+    - var type = "text", classes = ""
+    for validation_type in validation_types
+        if validation_type === VALIDATION_TYPES.required
+            - type = "text"
+            - classes += " input-block_validate-required"
+        else if validation_type === VALIDATION_TYPES.email
+            - type = "email"
+            - classes += " input-block_validate-email"
+        else if validation_type === VALIDATION_TYPES.phone
+            - type = "tel"
+            - classes += " input-block_validate-phone"
+    if is_textarea
+        - classes += " textarea-block"
+    div(class=`input-block${classes}`)
+        .input-block__label
+            label.label(for=`input-block-${input_block_count}`)= label
+        .input-block__input
+            if is_textarea
+                textarea.textarea(id=`input-block-${input_block_count}`)
+            else
+                input.input(id=`input-block-${input_block_count}` type= type autocomplete='off')
+        .input-block__error
+    - input_block_count++;
+
+

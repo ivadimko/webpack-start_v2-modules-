@@ -1,0 +1,105 @@
+
+//Fonts mixins
+
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    @if $asset-pipeline == true {
+      src: font-url('#{$file-path}.eot');
+      src: font-url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+      font-url('#{$file-path}.woff') format('woff'),
+      font-url('#{$file-path}.ttf') format('truetype');
+    }
+    @else {
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+      url('#{$file-path}.woff') format('woff'),
+      url('#{$file-path}.ttf') format('truetype');
+    }
+  }
+}
+
+@mixin fontMix($family:arial, $size: 16px, $weight: 400) {
+   //font: {
+	 // family: $family;
+	 // size: $size;
+	 // weight: $weight;
+   //}
+   
+   font:$weight $size $family;
+   
+}
+
+@mixin textStyle($textT: none, $lineHeight:inherit, $color:inherit,  $textD:none ) {
+   text-transform: $textT;
+   line-height: $lineHeight;
+   color: $color;
+   text-decoration: $textD;
+}
+
+@mixin transition($style:all, $speed:0.2s, $timing:linear) {
+   transition:$style $speed $timing;
+}
+
+
+//Fonts mixins
+
+@mixin selection ($bg, $text) {
+   ::selection {
+	  background: $bg;
+	  color: $text;
+   }
+}
+
+@mixin image-contain {
+   position: relative;
+   overflow: hidden;
+   > img {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+   }
+}
+
+@mixin image-cover {
+   @include image-contain;
+   > img {
+	  min-width: 100%;
+	  min-height: 100%;
+   }
+}
+
+@mixin image-fit-cover{
+  > img {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+}
+
+@mixin image-fit-width {
+   @include image-contain;
+   > img {
+	  max-width: 100%;
+   }
+}
+
+@mixin covers-parent {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+
+@mixin clearfix {
+   &::after {
+	  content: '';
+	  display: block;
+	  clear: both;
+   }
+}
